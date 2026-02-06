@@ -4,14 +4,51 @@ import { Form, Input, Select, Button, Upload, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { submissionAPI } from '../services/api'
+import { submissionAPI, authAPI } from '../services/api'
 import './DashboardPage.less'
 
 const navItems = [
-  { label: 'Quick Submission', children: ['New Submission'] },
-  { label: 'My Submission', children: ['New Papers', 'Under Review', 'Need to Revise', 'Accepted', 'Published', 'Rejected', 'Withdrawal'] },
+  {
+    label: 'Quick Submission',
+    children: ['New Submission']
+  },
+  {
+    label: 'My Submission',
+    children: [
+      'New Papers',
+      'Under Review',
+      'Need to Revise',
+      'Accepted',
+      'Published',
+      'Rejected',
+      'Withdrawal'
+    ]
+  },
   { label: 'My Review', children: ['Pending Review', 'Reviewed Papers'] },
-  { label: 'My Profile', children: ['Account Info', 'Logout'] }
+  {
+    label: 'My Editor-in-chief',
+    children: [
+      'Journal Management',
+      'Manuscript Management',
+      'Application Management'
+    ]
+  },
+  {
+    label: 'Join Us',
+    children: [
+      'All My Applications',
+      'Join Review Team',
+      'Join Editorial Board',
+      'Join Editor-in-chief Group',
+      'Recommend to Peer',
+      'Recommend to Library'
+    ]
+  },
+  {
+    label: 'My Profile',
+    children: ['Account Info', 'Logout']
+  },
+  { label: 'My System', children: ['home', 'Logout'] }
 ]
 
 const NewSubmissionPage = () => {
@@ -44,7 +81,7 @@ const NewSubmissionPage = () => {
 
   const handleNavClick = (label) => {
     if (label === 'Logout') {
-      // reuse authAPI.logout from services if needed
+      authAPI.logout()
       navigate('/login')
       return
     }
@@ -55,6 +92,10 @@ const NewSubmissionPage = () => {
     }
     if (label === 'Account Info') {
       navigate('/dashboard/account-info')
+      return
+    }
+    if (label === 'Join Editor-in-chief Group') {
+      navigate('/dashboard/join-editor-in-chief')
       return
     }
   }
