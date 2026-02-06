@@ -1,0 +1,279 @@
+/* Copyright Page Styles */
+.copyright-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* Banner Section */
+.copyright-banner {
+  margin-top: 80px;
+  text-align: center;
+  color: white;
+}
+
+.banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.copyright-banner-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #101010;
+  text-shadow: none;
+}
+
+.banner-subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Content Section */
+.copyright-content-section {
+  flex: 1;
+  padding: 40px 0 80px 0;
+}
+
+.copyright-content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+/* Form Fields */
+.form-fields {
+  // padding: 40px 0;
+}
+
+.form-field {
+  margin-bottom: 25px;
+  display: flex;
+}
+.form-input-box {
+  width: 200px;
+  border-bottom: 1px solid #000;
+  margin-left: 10px;
+}
+
+.form-field:last-child {
+  margin-bottom: 0;
+}
+
+.form-field label {
+  display: block;
+  font-size: 16px;
+  // font-weight: 600;
+  color: #000;
+  // margin-bottom: 8px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: #006837;
+  box-shadow: 0 0 0 3px rgba(0, 104, 55, 0.1);
+}
+
+.form-field input::placeholder {
+  color: #999;
+}
+
+/* Agreement Terms */
+.agreement-terms {
+  // padding: 0 40px;
+  margin-top: 10px;
+}
+
+.introduction {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  // padding: 20px;
+}
+
+.introduction p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+.terms-list {
+  margin-bottom: 30px;
+}
+
+.term-item {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.term-content {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Signature Section */
+.signature-section {
+  // border-top: 1px solid #e9ecef;
+}
+
+.signature-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.signature-table {
+  margin-bottom: 20px;
+  overflow-x: auto;
+  border: 1px solid #333;
+}
+
+.signature-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  // border: 1px solid #000;
+}
+
+.signature-table th {
+  // background: #fff;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signature-table td {
+  padding: 20px 12px;
+  border-bottom: 1px solid #333;
+  vertical-align: middle;
+}
+
+.signature-table tr:last-child td {
+  border-bottom: none;
+}
+
+.signature-table input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.signature-table input:focus {
+  outline: none;
+  border-color: #006837;
+  box-shadow: 0 0 0 2px rgba(0, 104, 55, 0.1);
+}
+
+.signature-table input[type="date"] {
+  min-width: 120px;
+}
+
+.signature-note {
+  font-size: 14px;
+  color: #000;
+  text-align: left;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 28px;
+  }
+  
+  .banner-subtitle {
+    font-size: 16px;
+  }
+  
+  .copyright-content-wrapper {
+    margin: 0 15px;
+    padding: 0;
+  }
+  
+  .form-fields,
+  .agreement-terms,
+  .signature-section {
+    padding: 25px 20px;
+  }
+  
+  .signature-table {
+    font-size: 12px;
+  }
+  
+  .signature-table th,
+  .signature-table td {
+    padding: 10px 8px;
+  }
+  
+  .signature-table input {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copyright-banner {
+    padding: 40px 0;
+  }
+  
+  .banner-title {
+    font-size: 24px;
+  }
+  
+  .banner-subtitle {
+    font-size: 14px;
+  }
+  
+  .copyright-content-section {
+    padding: 20px 0;
+  }
+  
+  .form-fields,
+  .agreement-terms,
+  .signature-section {
+    padding: 20px 15px;
+  }
+  
+  .term-title {
+    font-size: 16px;
+  }
+  
+  .term-content {
+    font-size: 14px;
+  }
+  
+  .signature-table {
+    font-size: 11px;
+  }
+  
+  .signature-table th,
+  .signature-table td {
+    padding: 8px 6px;
+  }
+  
+  .signature-table input {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+}

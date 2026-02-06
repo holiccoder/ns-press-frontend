@@ -1,0 +1,289 @@
+.digital-journal-detail-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Banner Section */
+.digital-article-banner {
+  background: url('https://baokan.tos-cn-beijing.volces.com/qi_detail_banner.png') no-repeat;
+  background-size: cover;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.article-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.banner-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Article Detail Section */
+.article-detail-section {
+  background: white;
+  padding: 60px 0;
+  flex: 1;
+}
+
+/* Journal Info Bar */
+.journal-info-bar {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.journal-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.journal-name {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.separator {
+  color: #ccc;
+}
+
+.download-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Article Content */
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-title {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.article-title h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* Authors Section */
+.authors-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.author-info {
+  margin-bottom: 15px;
+}
+
+.author-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.author-affiliation {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+/* Abstract Section */
+.abstract-section {
+  margin-bottom: 40px;
+}
+
+.abstract-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0px;
+  // border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+.abstract-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  text-align: justify;
+}
+
+/* Keywords Section */
+.keywords-section {
+  margin-bottom: 40px;
+}
+
+.keywords-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0px;
+  // border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* References Section */
+.references-section {
+  margin-bottom: 40px;
+}
+
+.references-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0px;
+  // border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+.references-list {
+  padding-left: 20px;
+}
+
+.reference-item {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Download Section */
+.download-section {
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.download-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  // border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .article-banner {
+    padding: 100px 0 60px;
+  }
+  
+  .banner-title {
+    font-size: 28px;
+  }
+  
+  .article-detail-section {
+    padding: 40px 0;
+  }
+  
+  .journal-info-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .journal-meta {
+    justify-content: center;
+  }
+  
+  .download-actions {
+    justify-content: center;
+  }
+  
+  .article-title h1 {
+    font-size: 24px;
+  }
+  
+  .authors-section,
+  .abstract-section,
+  .keywords-section,
+  .references-section {
+    margin-bottom: 30px;
+  }
+  
+  .download-section {
+    margin-top: 30px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-banner {
+    padding: 80px 0 40px;
+  }
+  
+  .banner-title {
+    font-size: 24px;
+  }
+  
+  .article-detail-section {
+    padding: 30px 0;
+  }
+  
+  .article-title h1 {
+    font-size: 20px;
+  }
+  
+  .journal-meta {
+    font-size: 12px;
+  }
+  
+  .authors-section,
+  .abstract-section,
+  .keywords-section,
+  .references-section {
+    margin-bottom: 25px;
+  }
+  
+  .download-section {
+    margin-top: 25px;
+    padding: 15px;
+  }
+}

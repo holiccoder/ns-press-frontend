@@ -1,0 +1,368 @@
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Banner Section */
+.about-banner {
+  position: relative;
+  overflow: hidden;
+  background: url('https://baokan.tos-cn-beijing.volces.com/guanyu_banner_3.png') no-repeat;
+  background-size: cover;
+  margin-top: 76px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-banner-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.banner-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-content-section {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  // text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  // text-align: center;
+}
+
+/* About Content Section */
+.about-content-section {
+  background: white;
+  padding: 80px 0;
+  flex: 1;
+}
+
+.about-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.company-name {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.company-name-en {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.description {
+  line-height: 1.8;
+  color: #555;
+}
+
+.paragraph {
+  font-size: 16px;
+  margin-bottom: 20px;
+  // text-align: justify;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.about-image {
+  flex: 0 0 400px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e9ecef;
+}
+
+.image-content {
+  width: 100%;
+  text-align: center;
+  color: #666;
+}
+
+.image-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.image-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Contact Section */
+.contact-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+}
+
+.contact-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  // background: #4CAF50;
+  border-radius: 2px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+  width: 20px;
+  // height: 20px;
+  flex: 0 0 50px;
+  text-align: center;
+}
+
+.contact-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.contact-value {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-content {
+    gap: 40px;
+  }
+  
+  .about-image {
+    flex: 0 0 350px;
+  }
+  
+  .image-placeholder {
+    height: 250px;
+  }
+  
+  .company-name {
+    font-size: 28px;
+  }
+  
+  .contact-info {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-banner {
+    padding: 100px 0 60px;
+  }
+  
+  .banner-title {
+    font-size: 36px;
+  }
+  
+  .banner-subtitle {
+    font-size: 16px;
+  }
+  
+  .about-content-section {
+    padding: 60px 0;
+  }
+  
+  .about-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .about-image {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .image-placeholder {
+    height: 200px;
+  }
+  
+  .company-name {
+    font-size: 24px;
+  }
+  
+  .company-name-en {
+    font-size: 16px;
+  }
+  
+  .paragraph {
+    font-size: 15px;
+  }
+  
+  .contact-section {
+    padding: 60px 0;
+  }
+  
+  .contact-title {
+    font-size: 28px;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .contact-item {
+    padding: 20px;
+  }
+  
+  .contact-icon {
+    font-size: 28px;
+    flex: 0 0 40px;
+  }
+  
+  .contact-value {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-banner {
+    padding: 80px 0 40px;
+  }
+  
+  .banner-title {
+    font-size: 28px;
+  }
+  
+  .banner-subtitle {
+    font-size: 14px;
+  }
+  
+  .about-content-section {
+    padding: 40px 0;
+  }
+  
+  .about-content {
+    gap: 30px;
+  }
+  
+  .about-image {
+    max-width: 300px;
+  }
+  
+  .image-placeholder {
+    height: 180px;
+  }
+  
+  .company-name {
+    font-size: 22px;
+  }
+  
+  .company-name-en {
+    font-size: 15px;
+  }
+  
+  .paragraph {
+    font-size: 14px;
+  }
+  
+  .contact-section {
+    padding: 40px 0;
+  }
+  
+  .contact-title {
+    font-size: 24px;
+  }
+  
+  .contact-item {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 35px;
+  }
+  
+  .contact-label {
+    font-size: 13px;
+  }
+  
+  .contact-value {
+    font-size: 14px;
+  }
+}

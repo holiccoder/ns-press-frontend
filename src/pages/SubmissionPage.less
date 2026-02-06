@@ -1,0 +1,430 @@
+.submission-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Banner Section */
+.submission-banner {
+  position: relative;
+  overflow: hidden;
+  background: url('https://baokan.tos-cn-beijing.volces.com/tougao_banner.png') no-repeat;
+  background-size: cover;
+  height: 600px;
+  margin-top: 80px;
+}
+.submission-banner-content {
+
+}
+.banner-content {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+
+.guidelines-box {
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 1200px;
+  width: 100%;
+  color: #fff;
+}
+
+.email-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.guidelines {
+  color: #fff;
+}
+
+.guideline-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #fff !important;
+}
+
+.guideline-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Form Section */
+.submission-form-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+  flex: 1;
+}
+
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.submission-form {
+  background: white;
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.form-item {
+  margin-bottom: 25px;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 让某些表单项跨越两列 */
+.form-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Antd Form.Item 样式覆盖 */
+.ant-form-item {
+  margin-bottom: 20px;
+}
+
+.ant-form-item-explain {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.ant-form-item-explain-error {
+  color: #ff4d4f;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-label::after {
+  content: ' *';
+  color: #ff4d4f;
+}
+
+.form-select,
+.form-input,
+.form-textarea {
+  width: 100%;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ant-select-single {
+  height: 49px !important;
+}
+
+.form-select:hover,
+.form-input:hover,
+.form-textarea:hover {
+  border-color: #006837;
+}
+
+.form-select:focus,
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #006837;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Upload Container */
+.upload-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.upload-input {
+  flex: 1;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.upload-btn {
+  background: #006837;
+  border-color: #006837;
+  color: white;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #006837;
+  border-color: #006837;
+  transform: translateY(-1px);
+}
+
+/* Captcha Container */
+.captcha-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.captcha-input {
+  flex: 1;
+  max-width: 150px;
+}
+
+.captcha-image {
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.captcha-image:hover {
+  border-color: #006837;
+  background: linear-gradient(135deg, #e8f5e8, #d4edda);
+}
+
+.captcha-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Submit Button */
+.submit-item {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.submit-btn {
+  background: #006837;
+  border-color: #006837;
+  color: white;
+  border-radius: 8px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #006837;
+  border-color: #006837;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Ant Design Overrides */
+.ant-select-selector {
+  border: 2px solid transparent !important;
+  // border-radius: 8px !important;
+  // padding: 10px 14px !important;
+  // height: auto !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: transparent !important;
+}
+
+.ant-input {
+  border: 2px solid #e9ecef !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  height: auto !important;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: #006837 !important;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2) !important;
+}
+
+.ant-input:hover {
+  border-color: #006837 !important;
+}
+
+.ant-input-affix-wrapper {
+  border: 2px solid #e9ecef !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  height: auto !important;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: #006837 !important;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2) !important;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: #006837 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .submission-banner {
+    padding: 100px 0 60px;
+  }
+  
+  .guidelines-box {
+    padding: 30px 20px;
+    margin: 0 20px;
+  }
+  
+  .email-title {
+    font-size: 20px;
+  }
+  
+  .guideline-text {
+    font-size: 15px;
+  }
+  
+  .submission-form-section {
+    padding: 60px 0;
+  }
+  
+  .submission-form {
+    padding: 30px 20px;
+    margin: 0 20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .form-label {
+    font-size: 15px;
+  }
+  
+  .form-select,
+  .form-input,
+  .form-textarea {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+  
+  .upload-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .upload-input {
+    width: 100%;
+  }
+  
+  .upload-btn {
+    width: 100%;
+  }
+  
+  .captcha-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .captcha-input {
+    max-width: 100%;
+  }
+  
+  .captcha-image {
+    width: 120px;
+    height: 45px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .submission-banner {
+    padding: 80px 0 40px;
+  }
+  
+  .guidelines-box {
+    padding: 25px 15px;
+    margin: 0 15px;
+  }
+  
+  .email-title {
+    font-size: 18px;
+  }
+  
+  .guideline-text {
+    font-size: 14px;
+  }
+  
+  .submission-form-section {
+    padding: 40px 0;
+  }
+  
+  .submission-form {
+    padding: 25px 15px;
+    margin: 0 15px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .form-label {
+    font-size: 14px;
+  }
+  
+  .form-select,
+  .form-input,
+  .form-textarea {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  .form-textarea {
+    min-height: 100px;
+  }
+  
+  .captcha-image {
+    width: 100px;
+    height: 40px;
+  }
+  
+  .captcha-text {
+    font-size: 16px;
+  }
+  
+  .submit-btn {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}

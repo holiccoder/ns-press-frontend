@@ -1,0 +1,283 @@
+.guide-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Banner Section */
+.guide-banner {
+  position: relative;
+  overflow: hidden;
+  background: url('https://baokan.tos-cn-beijing.volces.com/zhinan_banner_3.png') no-repeat;
+  background-size: cover;
+  margin-top: 80px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+.banner-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.banner-subtitle {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Tabs */
+.navigation-tabs {
+  // background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-top: 30px;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+}
+
+.tab-nav-btn {
+  background: none;
+  border: none;
+  padding: 20px 10px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+  margin-right: 20px;
+}
+
+.tab-nav-btn:hover {
+  color: #006837;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.tab-nav-btn.active {
+  color: #006837;
+  border-bottom-color: #006837;
+}
+
+/* Content Section */
+.content-section {
+  background: white;
+  padding: 80px 0;
+  flex: 1;
+}
+.guide-content-section {
+  padding: 30px 0 !important;
+}
+
+.content-wrapper {
+  max-width: 1200px !important;
+  margin: 0 auto;
+}
+
+.content-block {
+  margin-bottom: 60px;
+}
+
+.content-block:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #006837 ;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #006837;
+}
+
+.section-content {
+  font-size: 16px;
+  line-height: 1.8;
+  // color: #555;
+  margin-bottom: 25px;
+}
+
+.points-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: point-counter;
+}
+
+.point-item {
+  counter-increment: point-counter;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 16px;
+  color: #333;
+  position: relative;
+  padding-left: 30px;
+  line-height: 1.6;
+}
+
+.point-item::before {
+  content: counter(point-counter);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.point-item:last-child {
+  border-bottom: none;
+}
+
+.section-note {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin-top: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-left: 3px solid #4CAF50;
+  border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guide-banner {
+    padding: 100px 0 60px;
+  }
+  
+  .banner-title {
+    font-size: 36px;
+  }
+  
+  .banner-subtitle {
+    font-size: 16px;
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab-btn {
+    padding: 15px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .content-section {
+    padding: 60px 0;
+  }
+  
+  .content-wrapper {
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .section-content {
+    font-size: 15px;
+  }
+  
+  .point-item {
+    font-size: 15px;
+    padding-left: 25px;
+  }
+  
+  .point-item::before {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-banner {
+    padding: 80px 0 40px;
+  }
+  
+  .banner-title {
+    font-size: 28px;
+  }
+  
+  .banner-subtitle {
+    font-size: 14px;
+  }
+  
+  .content-section {
+    padding: 40px 0;
+  }
+  
+  .content-wrapper {
+    padding: 0 15px;
+  }
+  
+  .content-block {
+    margin-bottom: 40px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .section-content {
+    font-size: 14px;
+  }
+  
+  .point-item {
+    font-size: 14px;
+    padding-left: 20px;
+  }
+  
+  .point-item::before {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+  
+  .section-note {
+    font-size: 13px;
+  }
+}
