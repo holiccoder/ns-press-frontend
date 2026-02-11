@@ -134,7 +134,8 @@ const JournalDetailPage = () => {
     { id: 'scope', zh: '收稿范围', en: 'Scope' },
     { id: 'policy', zh: '期刊政策', en: 'Journal Policy' },
     { id: 'guidelines', zh: '作者须知', en: 'Author Guidelines' },
-    { id: 'editorial', zh: '编委团队', en: 'Editorial Board' }
+    { id: 'editorial', zh: '编委团队', en: 'Editorial Board' },
+    { id: 'payment', zh: '文章处理费说明', en: 'Payment Information' },
   ]
 
   return (
@@ -164,7 +165,14 @@ const JournalDetailPage = () => {
                   <p><strong>{language === 'zh' ? '出版频率' : 'Frequency'}:</strong> {journalDetail.frequency}</p>
                   <p><strong>{language === 'zh' ? '语言' : 'Language'}:</strong> {journalDetail.lang}</p>
                 </div>
-                <div className='journal-type-box' onClick={() => scrollToSection('digital')}>数字期刊</div>
+                <div>
+                  <div className='journal-type-box' onClick={() => scrollToSection('digital')}>数字期刊</div>
+                <div className='journal-type-box submit-essay' onClick={() => navigate('/login')}>在线投稿</div>
+                </div>
+                
+              </div>
+              <div className='journal-detail-description'>
+                {journalDetail.description}
               </div>
             </div>
           </div>
@@ -295,6 +303,25 @@ const JournalDetailPage = () => {
                   </div>
                 ))
               }
+            </div>
+          </div>
+
+          {/* Payment Information Section */}
+          <div id="payment" className="content-section-box">
+            <h3 className="detail-section-title">{language === 'zh' ? '文章处理费说明' : 'Payment Information'}</h3>
+            <div className="section-content">
+                 <p>{language === 'zh' ? '香港自然科学出版社倡导知识共享，采用开放获取的商业模式，我们也是布达佩斯开放获取先导计划(BudapestOpenAccess Initiative,BOAI)的拥护者。出版社所有期刊都是国际开放获取期刊，所发表的全部文章均可在期刊网站上免费阅读、下载、引用和传播。NSP出版社确保没有任何大学图书馆或个人需要通过支付费用来获得本刊文章的阅读权，因此NSP出版社没有任何收益来自于文章的出版发行。' : 'Hong Kong Natural Science Publisher advocates knowledge sharing and adopts an open access business model. We are also supporters of the Budapest Open Access Initiative (BOAI). All journals of the publisher are international open access journals, and all published articles can be freely read, downloaded, cited and disseminated on the journal website. NSP Publisher ensures that no university library or individual needs to pay fees to obtain the right to read articles in this journal, so FSP Publisher has no revenue from the publication of articles.'}</p>
+
+                 <p>{language === 'zh' ? '本刊文章处理费用由作者或者所在单位，或者研究基金承担，或者社会团体赞助。' : 'The article processing fee is borne by the author, the author\'s institution, research grants, or social organizations.'}</p>
+
+                 <p>{language === 'zh' ? '文章处理费:1800港币每版。' : 'Article processing fee: HK$1800 per article.'}</p>
+
+                 <p>{language === 'zh' ? '对于编委评价优秀的文章和收入困难者，出版社可以根据评估做出优惠措施。来保证优秀文章的出版。在读学生提供证明后，按六折收费。' : 'For articles evaluated by editorial board members as excellent and for authors with financial difficulties, the publisher may make preferential arrangements to ensure the publication of excellent articles. Students currently enrolled will be charged at 60% of the standard fee upon providing proof.'}</p>
+                 <p>{language === 'zh' ? '支付方式:稿件在录用后通过以下付款链接支付' : 'Payment method: Payment is required after manuscript acceptance via the following payment link.'}</p>
+
+                 <p><a href="https://www.front-sci.com/journal/mef?issue=v8i17">{language === 'zh' ? '港币付款链接' : 'HKD Payment Link'}</a></p>
+
+
             </div>
           </div>
         </div>

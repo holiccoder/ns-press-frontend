@@ -2,85 +2,44 @@ import React from 'react'
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Form, Input, Select, Upload, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useLanguage } from '../contexts/LanguageContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { dashboardNavItems as navItems } from '../constants/dashboardNavItems'
 import './DashboardPage.less'
-
-const navItems = [
-  {
-    label: 'Quick Submission',
-    children: ['New Submission']
-  },
-  {
-    label: 'My Submission',
-    children: [
-      'New Papers',
-      'Under Review',
-      'Need to Revise',
-      'Accepted',
-      'Published',
-      'Rejected',
-      'Withdrawal'
-    ]
-  },
-  { label: 'My Review', children: ['Pending Review', 'Reviewed Papers'] },
-  {
-    label: 'My Editor-in-chief',
-    children: [
-      'Journal Management',
-      'Manuscript Management',
-      'Application Management'
-    ]
-  },
-  {
-    label: 'Join Us',
-    children: [
-      'All My Applications',
-      'Join Review Team',
-      'Join Editorial Board',
-      'Join Editor-in-chief Group',
-      'Recommend to Peer',
-      'Recommend to Library'
-    ]
-  },
-  {
-    label: 'My Profile',
-    children: ['Account Info', 'Logout']
-  },
-  { label: 'My System', children: ['home', 'Logout'] }
-]
 
 const JoinEditorInChiefGroupPage = () => {
   const navigate = useNavigate()
+  const { language } = useLanguage()
   const [openMenus, setOpenMenus] = React.useState({
     'Join Us': true
   })
   const [cvFile, setCvFile] = React.useState(null)
   const [form] = Form.useForm()
 
-  const toggleMenu = (label, hasChildren) => {
+  const toggleMenu = (key, hasChildren) => {
     if (!hasChildren) return
     setOpenMenus((prev) => ({
       ...prev,
-      [label]: !prev[label]
+      [key]: !prev[key]
     }))
   }
 
-  const handleNavClick = (label) => {
-    if (label === 'Logout') {
+  const handleNavClick = (key) => {
+    if (key === 'Logout') {
       navigate('/login')
       return
     }
 
-    if (label === 'New Submission') {
+    if (key === 'New Submission') {
       navigate('/dashboard/new-submission')
       return
     }
-    if (label === 'Account Info') {
+    if (key === 'Account Info') {
       navigate('/dashboard/account-info')
       return
     }
-    if (label === 'Join Editor-in-chief Group') {
+    if (key === 'Join Editor-in-chief Group') {
       navigate('/dashboard/join-editor-in-chief')
       return
     }
@@ -111,23 +70,25 @@ const JoinEditorInChiefGroupPage = () => {
             <nav className="sidebar-nav">
               {navItems.map((item) => {
                 const hasChildren = Boolean(item.children?.length)
-                const isOpen = Boolean(openMenus[item.label])
+                const isOpen = Boolean(openMenus[item.key])
                 return (
-                  <div key={item.label} className={`nav-group ${hasChildren ? 'has-children' : ''} ${isOpen ? 'is-open' : ''}`}>
+                  <div key={item.key} className={`nav-group ${hasChildren ? 'has-children' : ''} ${isOpen ? 'is-open' : ''}`}>
                     <button
                       type="button"
                       className="nav-item"
-                      onClick={() => toggleMenu(item.label, hasChildren)}
+                      onClick={() => toggleMenu(item.key, hasChildren)}
                       aria-expanded={hasChildren ? isOpen : undefined}
                     >
-                      <span className="nav-icon"><PlusOutlined /></span>
-                      <span className="nav-label">{item.label}</span>
+                      <span className="nav-icon">
+                        <PlusOutlined />
+                      </span>
+                      <span className="nav-label">{item.label[language] || item.label.en}</span>
                     </button>
                     {hasChildren && (
                       <div className="nav-children">
                         {item.children.map((child) => (
-                          <button key={child} type="button" className="nav-child" onClick={() => handleNavClick(child)}>
-                            {child}
+                          <button key={child.key} type="button" className="nav-child" onClick={() => handleNavClick(child.key)}>
+                            {child.label[language] || child.label.en}
                           </button>
                         ))}
                       </div>

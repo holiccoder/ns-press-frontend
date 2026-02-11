@@ -36,7 +36,12 @@ apiClient.interceptors.request.use(
       if (!config.data) {
         config.data = {}
       }
-      config.data.lang = language === 'zh' ? '中文' : 'English'
+      const langValue = language === 'zh' ? '中文' : 'English'
+      if (typeof FormData !== 'undefined' && config.data instanceof FormData) {
+        config.data.append('lang', langValue)
+      } else {
+        config.data.lang = langValue
+      }
     }
     return config
   },
@@ -80,6 +85,7 @@ export const setToken = (token) => {
 export const removeToken = () => {
   localStorage.removeItem('authToken')
 }
+
 
 // 登录注册相关接口
 export const authAPI = {
@@ -161,7 +167,15 @@ export const submissionAPI = {
   captcha: () => apiClient.get('/index/captcha'),
   
   // 提交投稿
-  submitArticle: (formData) => apiClient.post('/index/contribute', formData),
+  submitArticle: (formData) => {
+    const token = getToken()
+    return apiClient.post('/index/contribute', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        ...(token ? { token }:{})
+      }
+    })
+  },
   
   // 上传文件
   // uploadFile: (formData) => apiClient.post('/upload/file', formData),

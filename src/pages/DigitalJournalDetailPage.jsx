@@ -88,7 +88,8 @@ const DigitalJournalDetailPage = () => {
 
             <div className="download-section">
               <h3>{language === 'zh' ? '全文' : 'FullText'}</h3>
-              <Button 
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                   <Button 
                 type="primary" 
                 icon={<FilePdfOutlined />}
                 onClick={handleDownloadPDF}
@@ -97,6 +98,21 @@ const DigitalJournalDetailPage = () => {
               >
                 {language === 'zh' ? '下载PDF' : 'Download PDF'}
               </Button>
+               
+               {
+                articleData.doi && <Button 
+                    type="primary" 
+                  
+                    onClick={handleDownloadPDF}
+                    size="large"
+                    style={{ backgroundColor: '#006837', borderColor: '#006837' }}
+                  >
+                    {articleData.doi}
+                  </Button>
+               }
+              
+              </div>
+              
             </div>
           </div>
         </div>

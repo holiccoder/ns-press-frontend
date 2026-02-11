@@ -4,6 +4,133 @@
   flex-direction: column;
 }
 
+.top-bar {
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.top-bar__right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.top-bar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+.top-bar__user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar__user-menu {
+  position: relative;
+}
+
+.top-bar__user-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.top-bar__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+  color: #000;
+}
+
+.top-bar__avatar--placeholder {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #fff;
+}
+
+.top-bar__name {
+  font-size: 14px;
+}
+
+.top-bar__dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  min-width: 140px;
+  display: none;
+  flex-direction: column;
+  padding: 6px 0;
+  z-index: 10;
+  margin-top: 6px;
+}
+
+.top-bar__dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -8px;
+  height: 8px;
+}
+
+.top-bar__user-menu:hover .top-bar__dropdown,
+.top-bar__user-menu:focus-within .top-bar__dropdown {
+  display: flex;
+}
+
+.top-bar__dropdown a,
+.top-bar__dropdown button {
+  color: #fff;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.top-bar__dropdown a:hover,
+.top-bar__dropdown button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 10px 16px;
+  }
+
+  .top-bar__right {
+    gap: 12px;
+  }
+}
+
 section {
   padding: 60px 0;
 }

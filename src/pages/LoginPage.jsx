@@ -42,6 +42,21 @@ const LoginPage = () => {
       if (res?.data?.token) {
         setToken(res.data.token)
       }
+      // Save user session fields if present in response
+      const sessionSource = res?.data?.user || res?.data?.profile || res?.data
+      if (sessionSource) {
+        const userSession = {
+          user_id: sessionSource.user_id,
+          real_name: sessionSource.real_name,
+          title: sessionSource.title,
+          degree: sessionSource.degree,
+          affiliation: sessionSource.affiliation,
+          city: sessionSource.city,
+          country: sessionSource.country,
+          address: sessionSource.address
+        }
+        localStorage.setItem('userProfile', JSON.stringify(userSession))
+      }
       message.success({ content: language === 'zh' ? '登录成功' : 'Login successful', key: 'login' })
       navigate('/dashboard')
     } catch (error) {

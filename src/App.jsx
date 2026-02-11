@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext'
 import { getAntdConfig } from './config/antdConfig'

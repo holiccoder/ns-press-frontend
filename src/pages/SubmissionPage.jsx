@@ -132,15 +132,6 @@ const SubmissionPage = () => {
     }))
   }
 
-  const handleFileUpload = (file) => {
-    setFormData(prev => ({
-      ...prev,
-      article: file
-    }))
-    message.success(language === 'zh' ? '文件上传成功' : 'File uploaded successfully')
-    return false // 阻止默认上传行为
-  }
-
   const handleRequestUpload = ({ file, onSuccess, onError }) => {   
     console.log(file)
     submissionAPI.uploadFile(file).then(res => {
