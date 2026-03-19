@@ -53,7 +53,10 @@ const LoginPage = () => {
           affiliation: sessionSource.affiliation,
           city: sessionSource.city,
           country: sessionSource.country,
-          address: sessionSource.address
+          address: sessionSource.address,
+          intro: sessionSource.intro,
+          account: sessionSource.account,
+          phone: sessionSource.mobile,
         }
         localStorage.setItem('userProfile', JSON.stringify(userSession))
       }

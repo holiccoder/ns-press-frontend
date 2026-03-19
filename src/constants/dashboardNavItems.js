@@ -10,6 +10,7 @@ export const dashboardNavItems = [
     key: 'My Submission',
     label: { en: 'My Submission', zh: '我的投稿' },
     children: [
+      { key: 'All My Submission', label: { en: 'All My Submission', zh: '所有投稿' } },
       { key: 'New Papers', label: { en: 'New Papers', zh: '新论文' } },
       { key: 'Under Review', label: { en: 'Under Review', zh: '审稿中' } },
       { key: 'Need to Revise', label: { en: 'Need to Revise', zh: '需修改' } },

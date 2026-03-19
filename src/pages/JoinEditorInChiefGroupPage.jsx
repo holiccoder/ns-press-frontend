@@ -6,6 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { dashboardNavItems as navItems } from '../constants/dashboardNavItems'
+import { authAPI } from '../services/api'
 import './DashboardPage.less'
 
 const JoinEditorInChiefGroupPage = () => {
@@ -26,7 +27,27 @@ const JoinEditorInChiefGroupPage = () => {
   }
 
   const handleNavClick = (key) => {
+    const submissionStatusMap = {
+      'Under Review': 0,
+      'Need to Revise': 1,
+      'Accepted': 2,
+      'Published': 4,
+      'Rejected': 3,
+      'Withdrawal': 3
+    }
+
+    if (key === 'All My Submission') {
+      navigate('/dashboard/my-submission')
+      return
+    }
+
+    if (Object.prototype.hasOwnProperty.call(submissionStatusMap, key)) {
+      navigate(`/dashboard/my-submission?status=${submissionStatusMap[key]}`)
+      return
+    }
+
     if (key === 'Logout') {
+      authAPI.logout()
       navigate('/login')
       return
     }
@@ -185,3 +206,4 @@ const JoinEditorInChiefGroupPage = () => {
 }
 
 export default JoinEditorInChiefGroupPage
+

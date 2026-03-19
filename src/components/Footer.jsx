@@ -14,7 +14,7 @@ const Footer = () => {
       address: '地址: 九龍尖沙咀科學館道14號 新文華中心B座7樓701室127單位',
       contentExploration: {
         title: '内容探索',
-        items: ['首页', '期刊', '图书', '关于我们', '在线投稿']
+        items: ['首页', '期刊', '图书', '关于我们']
       },
       authorServices: {
         title: '作者服务',
@@ -47,7 +47,7 @@ const Footer = () => {
       address: 'Address: Unit 127, 7/F, Tower B, New World Centre, 14 Science Museum Road, Tsim Sha Tsui, Kowloon',
       contentExploration: {
         title: 'Content Exploration',
-        items: ['Home', 'Journal', 'Book', 'About Us', 'Online Submission']
+        items: ['Home', 'Journal', 'Book', 'About Us']
       },
       authorServices: {
         title: 'Author Services',
@@ -106,8 +106,6 @@ const Footer = () => {
                     linkPath = '/books'
                   } else if (item === '关于我们' || item === 'About Us') {
                     linkPath = '/about'
-                  } else if (item === '在线投稿' || item === 'Online Submission') {
-                    linkPath = '/submission'
                   }
                   return (
                     <li key={index}>

@@ -100,16 +100,20 @@ const DigitalJournalDetailPage = () => {
               </Button>
                
                {
-                articleData.doi && <Button 
-                    type="primary" 
-                  
-                    onClick={handleDownloadPDF}
-                    size="large"
-                    style={{ backgroundColor: '#006837', borderColor: '#006837' }}
-                  >
-                    {articleData.doi}
-                  </Button>
-               }
+                 articleData.doi && <a 
+                   href={`https://doi.org/${articleData.doi}`}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                 >
+                   <Button 
+                     type="primary" 
+                     size="large"
+                     style={{ backgroundColor: '#006837', borderColor: '#006837' }}
+                   >
+                     DOI: {articleData.doi}
+                   </Button>
+                 </a>
+                }
               
               </div>
               

@@ -55,6 +55,25 @@ const NewSubmissionPage = () => {
   }
 
   const handleNavClick = (key) => {
+    const submissionStatusMap = {
+      'Under Review': 0,
+      'Need to Revise': 1,
+      'Accepted': 2,
+      'Published': 4,
+      'Rejected': 3,
+      'Withdrawal': 3
+    }
+
+    if (key === 'All My Submission') {
+      navigate('/dashboard/my-submission')
+      return
+    }
+
+    if (Object.prototype.hasOwnProperty.call(submissionStatusMap, key)) {
+      navigate(`/dashboard/my-submission?status=${submissionStatusMap[key]}`)
+      return
+    }
+
     if (key === 'Logout') {
       authAPI.logout()
       navigate('/login')
@@ -126,19 +145,14 @@ const NewSubmissionPage = () => {
 
       const res = await submissionAPI.submitArticle(formData)
 
-      if(res?.code === 1){
-         message.success({ content: res?.msg || 'Submission successful', key: 'submit' })
-         generateCaptcha()
-         return
-      }
-      
-      if (res?.code !== 1) {
-        message.error({ content: res?.msg || 'Submission failed', key: 'submit' })
-        generateCaptcha()
+      if (res?.code === 1) {
+        message.success({ content: res?.msg || 'Submission successful', key: 'submit' })
+        navigate('/dashboard/my-submission')
         return
       }
-      message.success({ content: 'Submission successful', key: 'submit' })
-      navigate('/dashboard')
+
+      message.error({ content: res?.msg || 'Submission failed', key: 'submit' })
+      generateCaptcha()
     } catch (err) {
       message.error({ content: 'Submission failed', key: 'submit' })
       generateCaptcha()

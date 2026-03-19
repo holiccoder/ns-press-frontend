@@ -18,7 +18,6 @@ const Header = () => {
     { zh: '期刊', en: 'Journal', path: '/journals' },
     { zh: '图书', en: 'Book', path: '/books' },
     { zh: '关于我们', en: 'About Us', path: '/about' },
-    { zh: '在线投稿', en: 'Online Submission', path: '/submission' },
     { zh: '信息指南', en: 'Information Guide', path: '/guide' }
   ]
 
@@ -103,9 +102,9 @@ const Header = () => {
            
       </header>
       <div className="header-container">
-        <div className="logo">
-          <img className='logo-img' src='https://baokan.tos-cn-beijing.volces.com/logo.png' />
-        </div>
+        {/*<div className="logo">*/}
+        {/*  <img className='logo-img' src='https://baokan.tos-cn-beijing.volces.com/logo.png' />*/}
+        {/*</div>*/}
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           {isMobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}

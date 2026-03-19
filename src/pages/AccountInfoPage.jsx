@@ -50,21 +50,35 @@ const AccountInfoPage = () => {
         if (res?.code === 0) {
           return
         }
-        if (res?.data) {
-          form.setFieldsValue({
-            name: res.data.name,
-            phone: res.data.phone,
-            title: res.data.title,
-            degree: res.data.degree,
-            affiliation: res.data.affiliation,
-            intro: res.data.intro,
-            address: res.data.address,
-            city: res.data.city,
-            country: res.data.country
-          })
+        const profile = res?.data
+        if (profile && Object.keys(profile).length > 0) {
+          const fieldMap = {
+            name: profile.real_name || profile.name,
+            phone: profile.mobile,
+            title: profile.title,
+            degree: profile.degree,
+            affiliation: profile.affiliation,
+            intro: profile.intro,
+            address: profile.address,
+            city: profile.city,
+            country: profile.country
+          }
+          // Only set fields that have actual values so we don't overwrite cached data with undefined
+          const defined = Object.fromEntries(
+            Object.entries(fieldMap).filter(([, v]) => v !== undefined && v !== null && v !== '')
+          )
+          if (Object.keys(defined).length > 0) {
+            form.setFieldsValue(defined)
+          }
+          // Update localStorage cache with latest data, but keep existing fields when API response is partial
+          const mergedProfile = {
+            ...(cached || {}),
+            ...profile
+          }
+          localStorage.setItem('userProfile', JSON.stringify(mergedProfile))
         }
       } catch (err) {
-        // ignore
+        // API failed — cached values remain in the form
       }
     }
     fetchProfile()
@@ -76,6 +90,25 @@ const AccountInfoPage = () => {
   }
 
   const handleNavClick = (key) => {
+    const submissionStatusMap = {
+      'Under Review': 0,
+      'Need to Revise': 1,
+      'Accepted': 2,
+      'Published': 4,
+      'Rejected': 3,
+      'Withdrawal': 3
+    }
+
+    if (key === 'All My Submission') {
+      navigate('/dashboard/my-submission')
+      return
+    }
+
+    if (Object.prototype.hasOwnProperty.call(submissionStatusMap, key)) {
+      navigate(`/dashboard/my-submission?status=${submissionStatusMap[key]}`)
+      return
+    }
+
     if (key === 'Logout') {
       authAPI.logout()
       navigate('/login')
@@ -179,6 +212,10 @@ const AccountInfoPage = () => {
 
                     <Form.Item name="country" label={language === 'zh' ? '国家/地区' : 'Country/Region'} rules={[{ required: true, message: language === 'zh' ? '请选择国家/地区' : 'Please select country' }]}>
                       <Select options={countryOptions.map((v) => ({ value: v, label: v }))} />
+                    </Form.Item>
+
+                    <Form.Item name="address" label={language === 'zh' ? '地址' : 'Address'}>
+                      <Input />
                     </Form.Item>
 
                     <Form.Item name="intro" label={language === 'zh' ? '个人简介' : 'Intro'}>

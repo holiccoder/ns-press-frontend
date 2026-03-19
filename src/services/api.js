@@ -1,7 +1,13 @@
 import axios from 'axios'
 
 // API基础配置
-const API_BASE_URL = 'http://localhost:8000/api' // 替换为实际的API地址
+let API_BASE_URL
+
+if (process.env.NODE_ENV === 'production') {
+  API_BASE_URL = 'http://114.80.40.54:82/api'
+}else{
+  API_BASE_URL = 'http://localhost:8000/api'
+}
 
 
 
@@ -19,17 +25,19 @@ apiClient.interceptors.request.use(
   (config) => {
     const language = getLanguage()
     const token = getToken()
+    const shouldAttachLang = !config.skipLang
     
     // Add authorization header if token exists
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.token = token
     }
     
     // 将语言参数添加到请求参数中
     if (config.method === 'get') {
       config.params = {
         ...config.params,
-        lang: language === 'zh' ? '中文' : 'English'
+        ...(shouldAttachLang ? { lang: language === 'zh' ? '中文' : 'English' } : {}),
+        ...(token ? { token } : {})
       }
     } else {
       // 对于POST等请求，添加到请求体中
@@ -38,9 +46,11 @@ apiClient.interceptors.request.use(
       }
       const langValue = language === 'zh' ? '中文' : 'English'
       if (typeof FormData !== 'undefined' && config.data instanceof FormData) {
-        config.data.append('lang', langValue)
+        if (shouldAttachLang) config.data.append('lang', langValue)
+        if (token) config.data.append('token', token)
       } else {
-        config.data.lang = langValue
+        if (shouldAttachLang) config.data.lang = langValue
+        if (token) config.data.token = token
       }
     }
     return config
@@ -99,8 +109,15 @@ export const authAPI = {
 
 // User profile related APIs
 export const userAPI = {
-  getProfile: () => apiClient.get('/user/profile'),
-  updateProfile: (payload) => apiClient.post('/user/profile', payload)
+  getProfile: () => apiClient.get('/user/info'),
+  updateProfile: (payload) => {
+    const token = getToken()
+    return apiClient.post('/user/setInfo', payload, {
+      headers: {
+        ...(token ? { token } : {})
+      }
+    })
+  }
 }
 
 
@@ -165,6 +182,49 @@ export const submissionAPI = {
 
   // 验证码
   captcha: () => apiClient.get('/index/captcha'),
+
+  // 我的投稿列表
+  getMyContribution: () => {
+    const token = getToken()
+    return apiClient.get('/index/myContributions', {
+      headers: {
+        ...(token ? { token } : {})
+      }
+    })
+  },
+
+  // 投稿历史记录列表
+  getContributionHistoryList: (params = {}) => {
+    const token = getToken()
+    return apiClient.get('/adminapi/journal.contribution_history/index', {
+      params,
+      headers: {
+        ...(token ? { token } : {})
+      }
+    })
+  },
+
+  // 通过 user_id 与 contribution_id 查询投稿历史记录
+  queryContributionHistory: (params = {}) => {
+    const token = getToken()
+    return apiClient.get('/index/contributeHistory', {
+      params,
+      headers: {
+        ...(token ? { token } : {})
+      }
+    })
+  },
+
+  // 保存投稿历史记录
+  saveContributionHistory: (payload) => {
+    const token = getToken()
+    return apiClient.post('/index/saveContribute', payload, {
+      skipLang: true,
+      headers: {
+        ...(token ? { token } : {})
+      }
+    })
+  },
   
   // 提交投稿
   submitArticle: (formData) => {

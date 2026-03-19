@@ -11,4 +11,9 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    host: true, // 关键：让服务监听 0.0.0.0，不只是 localhost
+    port: 5173,
+    allowedHosts: true // 允许所有域名访问
+  }
 })

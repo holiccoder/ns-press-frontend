@@ -96,31 +96,31 @@ const RegisterPage = () => {
                 <Input.Password />
               </Form.Item>
 
-              <Form.Item name="phone" label={texts[language].phone}>
+              <Form.Item name="phone" label={texts[language].phone} rules={[{ required: true, message: language === 'zh' ? '请输入电话' : 'Please enter phone' }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item name="title" label={texts[language].titleField}>
+              <Form.Item name="title" label={texts[language].titleField} rules={[{ required: true, message: language === 'zh' ? '请选择职称' : 'Please select title' }]}>
                 <Select options={titleOptions.map((value) => ({ value, label: value }))} />
               </Form.Item>
 
-              <Form.Item name="degree" label={texts[language].degree}>
+              <Form.Item name="degree" label={texts[language].degree} rules={[{ required: true, message: language === 'zh' ? '请选择学位' : 'Please select degree' }]}>
                 <Select options={degreeOptions.map((value) => ({ value, label: value }))} />
               </Form.Item>
 
-              <Form.Item name="affiliation" label={texts[language].affiliation}>
+              <Form.Item name="affiliation" label={texts[language].affiliation} rules={[{ required: true, message: language === 'zh' ? '请输入单位/机构' : 'Please enter affiliation' }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item name="address" label={texts[language].address}>
+              <Form.Item name="address" label={texts[language].address} rules={[{ required: true, message: language === 'zh' ? '请输入地址' : 'Please enter address' }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item name="city" label={texts[language].city}>
+              <Form.Item name="city" label={texts[language].city} rules={[{ required: true, message: language === 'zh' ? '请输入城市' : 'Please enter city' }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item name="country" label={texts[language].countryRegion}>
+              <Form.Item name="country" label={texts[language].countryRegion} rules={[{ required: true, message: language === 'zh' ? '请选择国家/地区' : 'Please select country/region' }]}>
                 <Select
                   showSearch
                   optionFilterProp="label"

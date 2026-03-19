@@ -23,6 +23,7 @@ import DashboardPage from './pages/DashboardPage'
 import NewSubmissionPage from './pages/NewSubmissionPage'
 import AccountInfoPage from './pages/AccountInfoPage'
 import JoinEditorInChiefGroupPage from './pages/JoinEditorInChiefGroupPage'
+import MySubmissionPage from './pages/MySubmissionPage'
 import './styles/App.less'
 
 // 内部组件，用于获取语言配置
@@ -52,6 +53,7 @@ const AppContent = () => {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/dashboard" element={<ProtectedRoute element={<DashboardPage />} />} />
             <Route path="/dashboard/new-submission" element={<ProtectedRoute element={<NewSubmissionPage />} />} />
+            <Route path="/dashboard/my-submission" element={<ProtectedRoute element={<MySubmissionPage />} />} />
             <Route path="/dashboard/account-info" element={<ProtectedRoute element={<AccountInfoPage />} />} />
             <Route path="/dashboard/join-editor-in-chief" element={<ProtectedRoute element={<JoinEditorInChiefGroupPage />} />} />
           </Routes>
@@ -70,3 +72,4 @@ function App() {
 }
 
 export default App
+
