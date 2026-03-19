@@ -25,12 +25,24 @@ const JournalDetailPage = () => {
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
 
+  const getIssueOptions = (periodMap = {}) => {
+    return Array.from(new Set(
+      Object.values(periodMap).flatMap((value) => Array.isArray(value) ? value : [])
+    ))
+  }
+
   useEffect(() => {
     if (id) {
       journalAPI.getJournalDetail(id).then(res => {
-        setJournalDetail(res.data);
-        // setYears(res.data.year);
-        console.log('res',res)
+        const detail = res.data || {}
+        setJournalDetail(detail)
+
+        const periodMap = detail.periods || {}
+        const yearList = Array.isArray(detail.year) && detail.year.length > 0
+          ? detail.year
+          : Object.keys(periodMap)
+        setYears(yearList)
+        setIssues(getIssueOptions(periodMap))
       })
 
     }
@@ -97,7 +109,7 @@ const JournalDetailPage = () => {
   const handleClearSearch = () => {
     setSearchYear(null);
     setSearchIssue(null);
-    setIssues([]);
+    setIssues(getIssueOptions(journalDetail?.periods || {}));
     setCurrentPage(1);
   }
 
@@ -118,7 +130,11 @@ const JournalDetailPage = () => {
     console.log('选择年份:', value);
     setSearchIssue(null);
     setSearchYear(value);
-    setIssues(journalDetail.periods[value]);
+    if (value) {
+      setIssues(journalDetail?.periods?.[value] || []);
+    } else {
+      setIssues(getIssueOptions(journalDetail?.periods || {}));
+    }
     setCurrentPage(1); // 重置页码
   }
 
@@ -171,6 +187,11 @@ const JournalDetailPage = () => {
                 </div>
                 
               </div>
+              {journalDetail.other_info && (
+                  <div className="journal-detail-other-info">
+                    {journalDetail.other_info}
+                  </div>
+              )}
               <div className='journal-detail-description'>
                 {journalDetail.description}
               </div>
@@ -210,8 +231,8 @@ const JournalDetailPage = () => {
                   placeholder={language === 'zh' ? '请选择期刊年份' : 'Select Year'}
                 >
                   {
-                    years?.map((item, index) => (
-                      <Option value={item} key={index}>{item}</Option>
+                    years?.map((item) => (
+                      <Option value={item} key={item}>{item}</Option>
                     ))
                   }
                 </Select>
@@ -222,8 +243,8 @@ const JournalDetailPage = () => {
                   placeholder={language === 'zh' ? '请选择期刊期数' : 'Select Issue'}
                 >
                   {
-                    issues?.map((item, index) => (
-                      <Option value={item} key={index}>{item}</Option>
+                    issues?.map((item) => (
+                      <Option value={item} key={item}>{item}</Option>
                     ))
                   }
                 </Select>
@@ -235,6 +256,7 @@ const JournalDetailPage = () => {
                 </Button>
               </div>
               <Table
+                rowKey={(record) => record.id ?? record.article_id ?? `${record.title}-${record.author}`}
                 columns={columns}
                 dataSource={searchResults}
                 pagination={false}
@@ -319,7 +341,7 @@ const JournalDetailPage = () => {
                  <p>{language === 'zh' ? '对于编委评价优秀的文章和收入困难者，出版社可以根据评估做出优惠措施。来保证优秀文章的出版。在读学生提供证明后，按六折收费。' : 'For articles evaluated by editorial board members as excellent and for authors with financial difficulties, the publisher may make preferential arrangements to ensure the publication of excellent articles. Students currently enrolled will be charged at 60% of the standard fee upon providing proof.'}</p>
                  <p>{language === 'zh' ? '支付方式:稿件在录用后通过以下付款链接支付' : 'Payment method: Payment is required after manuscript acceptance via the following payment link.'}</p>
 
-                 <p><a href="https://www.front-sci.com/journal/mef?issue=v8i17">{language === 'zh' ? '港币付款链接' : 'HKD Payment Link'}</a></p>
+                 <p><a href="#">{language === 'zh' ? '港币付款链接' : 'HKD Payment Link'}</a></p>
 
 
             </div>
