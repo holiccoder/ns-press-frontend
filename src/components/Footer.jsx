@@ -79,11 +79,11 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-left">
             <div className="footer-logo">
-              <img className='footer-logo-img' src='https://baokan.tos-cn-beijing.volces.com/footer_logo_img.png' />
-              {/* <div className="logo-icon">NSP</div>
-              <div className="logo-text">
-                {language === 'zh' ? '香港自然科学出版社' : 'Hong Kong Natural Science Press Limited'}
-              </div> */}
+              <img className='footer-logo-img' src='https://api.ns-press.com/uploads/images/website/logo-white.png' />
+              {/*<div className="logo-icon">NSP</div>*/}
+              {/*<div className="logo-text">*/}
+              {/*   {language === 'zh' ? '香港自然科学出版社' : 'Hong Kong Natural Science Press Limited'}*/}
+              {/*</div>*/}
             </div>
             <div className="footer-contact-info">
               <p>{footerContent[language].phone}</p>

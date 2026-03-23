@@ -58,7 +58,7 @@ We have established cooperative relationships with many renowned academic instit
             <button onClick={() => navigate('/about')} className="view-more-btn">{aboutContent[language].buttonText}</button>
           </div>
           <div className="about-image">
-            <img className="image-placeholder" src='https://baokan.tos-cn-beijing.volces.com/home_about_img.png' />
+            <img className="image-placeholder" src='https://api.ns-press.com/uploads/images/website/guanyuwomen.jpg' />
           </div>
         </div>
       </div>

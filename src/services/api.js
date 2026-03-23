@@ -4,9 +4,9 @@ import axios from 'axios'
 let API_BASE_URL
 
 if (process.env.NODE_ENV === 'production') {
-  API_BASE_URL = 'http://114.80.40.54:82/api'
+  API_BASE_URL = 'https://api.ns-press.com/api'
 }else{
-  API_BASE_URL = 'http://localhost:8000/api'
+  API_BASE_URL = 'http://127.0.0.1:8000/api'
 }
 
 

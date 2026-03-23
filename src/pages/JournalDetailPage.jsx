@@ -25,9 +25,37 @@ const JournalDetailPage = () => {
   const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
 
+  const toArray = (value) => {
+    if (Array.isArray(value)) return value
+    if (value === undefined || value === null || value === '') return []
+
+    if (typeof value === 'string') {
+      const trimmedValue = value.trim()
+      if (!trimmedValue) return []
+
+      if (trimmedValue.startsWith('[') && trimmedValue.endsWith(']')) {
+        try {
+          const parsedValue = JSON.parse(trimmedValue)
+          if (Array.isArray(parsedValue)) return parsedValue
+        } catch {
+          // ignore parse error and continue with fallback parsing
+        }
+      }
+
+      if (trimmedValue.includes(',')) {
+        return trimmedValue.split(',').map((item) => item.trim()).filter(Boolean)
+      }
+
+      return [trimmedValue]
+    }
+
+    if (typeof value === 'number') return [value]
+    return []
+  }
+
   const getIssueOptions = (periodMap = {}) => {
     return Array.from(new Set(
-      Object.values(periodMap).flatMap((value) => Array.isArray(value) ? value : [])
+      Object.values(periodMap).flatMap((value) => toArray(value))
     ))
   }
 
@@ -38,10 +66,10 @@ const JournalDetailPage = () => {
         setJournalDetail(detail)
 
         const periodMap = detail.periods || {}
-        const yearList = Array.isArray(detail.year) && detail.year.length > 0
-          ? detail.year
-          : Object.keys(periodMap)
-        setYears(yearList)
+        const yearList = toArray(detail.year)
+        const fallbackYearList = Object.keys(periodMap)
+
+        setYears(yearList.length > 0 ? yearList : fallbackYearList)
         setIssues(getIssueOptions(periodMap))
       })
 
@@ -51,8 +79,8 @@ const JournalDetailPage = () => {
   useEffect(() => {
     if (id) {
       journalAPI.getDigitalJournals(id, searchYear, searchIssue, currentPage, pageSize).then(res => {
-        setSearchResults(res.data.lists);
-        setTotal(res.data.count);
+        setSearchResults(toArray(res?.data?.lists));
+        setTotal(Number(res?.data?.count) || 0);
       }).catch(err => {
         console.error('获取数字期刊失败:', err);
         setSearchResults([]);
@@ -131,7 +159,7 @@ const JournalDetailPage = () => {
     setSearchIssue(null);
     setSearchYear(value);
     if (value) {
-      setIssues(journalDetail?.periods?.[value] || []);
+      setIssues(toArray(journalDetail?.periods?.[value]));
     } else {
       setIssues(getIssueOptions(journalDetail?.periods || {}));
     }
@@ -231,7 +259,7 @@ const JournalDetailPage = () => {
                   placeholder={language === 'zh' ? '请选择期刊年份' : 'Select Year'}
                 >
                   {
-                    years?.map((item) => (
+                    toArray(years).map((item) => (
                       <Option value={item} key={item}>{item}</Option>
                     ))
                   }
@@ -243,7 +271,7 @@ const JournalDetailPage = () => {
                   placeholder={language === 'zh' ? '请选择期刊期数' : 'Select Issue'}
                 >
                   {
-                    issues?.map((item) => (
+                    toArray(issues).map((item) => (
                       <Option value={item} key={item}>{item}</Option>
                     ))
                   }
@@ -336,7 +364,7 @@ const JournalDetailPage = () => {
 
                  <p>{language === 'zh' ? '本刊文章处理费用由作者或者所在单位，或者研究基金承担，或者社会团体赞助。' : 'The article processing fee is borne by the author, the author\'s institution, research grants, or social organizations.'}</p>
 
-                 <p>{language === 'zh' ? '文章处理费:1800港币每版。' : 'Article processing fee: HK$1800 per article.'}</p>
+                 <p>{language === 'zh' ? '文章处理费:1800港币每篇。' : 'Article processing fee: HK$1800 per article.'}</p>
 
                  <p>{language === 'zh' ? '对于编委评价优秀的文章和收入困难者，出版社可以根据评估做出优惠措施。来保证优秀文章的出版。在读学生提供证明后，按六折收费。' : 'For articles evaluated by editorial board members as excellent and for authors with financial difficulties, the publisher may make preferential arrangements to ensure the publication of excellent articles. Students currently enrolled will be charged at 60% of the standard fee upon providing proof.'}</p>
                  <p>{language === 'zh' ? '支付方式:稿件在录用后通过以下付款链接支付' : 'Payment method: Payment is required after manuscript acceptance via the following payment link.'}</p>

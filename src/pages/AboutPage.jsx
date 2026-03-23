@@ -77,7 +77,7 @@ Through digital technology and multilingual channels, we break down geographical
             </div>
             <div className="about-image">
               <div className="image-placeholder">
-                <img className="image-content" src='https://baokan.tos-cn-beijing.volces.com/about_us_img.png' />
+                <img className="image-content" src='https://api.ns-press.com/uploads/images/website/guanyuwomen.jpg' />
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ Through digital technology and multilingual channels, we break down geographical
           <h2 className="contact-title">{aboutData[language].contactTitle}</h2>
           <div className="contact-info">
             <div className="contact-item">
-              <img className="contact-icon" src='https://baokan.tos-cn-beijing.volces.com/about_icon_5.png' />
+              <img className="contact-icon" src='/icons/phone.svg' alt="phone" />
               <div className="contact-details">
                 <span className="contact-label">{language === 'zh' ? '电话' : 'Phone'}:</span>
                 <span className="contact-value">{aboutData[language].contactInfo.phone}</span>
@@ -98,7 +98,7 @@ Through digital technology and multilingual channels, we break down geographical
             </div>
             
             <div className="contact-item">
-               <img className="contact-icon" src='https://baokan.tos-cn-beijing.volces.com/about_icon_4.png' />
+               <img className="contact-icon" src='/icons/email.svg' alt="email" />
               <div className="contact-details">
                 <span className="contact-label">{language === 'zh' ? '邮件' : 'Email'}:</span>
                 <span className="contact-value">{aboutData[language].contactInfo.email}</span>
@@ -106,7 +106,7 @@ Through digital technology and multilingual channels, we break down geographical
             </div>
             
             <div className="contact-item">
-              <img className="contact-icon" src='https://baokan.tos-cn-beijing.volces.com/about_icon_3.png' />
+              <img className="contact-icon" src='/icons/address.svg' alt="address" />
               <div className="contact-details">
                 <span className="contact-label">{language === 'zh' ? '地址' : 'Address'}:</span>
                 <span className="contact-value">{aboutData[language].contactInfo.address}</span>
@@ -114,7 +114,7 @@ Through digital technology and multilingual channels, we break down geographical
             </div>
             
             <div className="contact-item">
-              <img className="contact-icon" src='https://baokan.tos-cn-beijing.volces.com/about_icon_2.png' />
+              <img className="contact-icon" src='/icons/postal.svg' alt="postal" />
               <div className="contact-details">
                 <span className="contact-label">{language === 'zh' ? '邮编' : 'Postal Code'}:</span>
                 <span className="contact-value">{aboutData[language].contactInfo.postalCode}</span>
@@ -122,7 +122,7 @@ Through digital technology and multilingual channels, we break down geographical
             </div>
             
             <div className="contact-item">
-              <img className="contact-icon" src='https://baokan.tos-cn-beijing.volces.com/about_icon_1.png' />
+              <img className="contact-icon" src='/icons/website.svg' alt="website" />
               <div className="contact-details">
                 <span className="contact-label">{language === 'zh' ? '网址' : 'Website'}:</span>
                 <span className="contact-value">{aboutData[language].contactInfo.website}</span>

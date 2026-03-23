@@ -642,7 +642,14 @@ const MySubmissionPage = () => {
               historyParams.user_id = currentUserId
             }
 
-            const historyResponse = await submissionAPI.getContributionHistoryList(historyParams)
+            let historyResponse
+
+            try {
+              historyResponse = await submissionAPI.queryContributionHistory(historyParams)
+            } catch {
+              historyResponse = await submissionAPI.getContributionHistoryList(historyParams)
+            }
+
             const historyList = extractListFromResponse(historyResponse)
             const historyMap = buildHistoryMapFromRecords(historyList, contributionIdSet, currentUserId)
 

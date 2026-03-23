@@ -102,9 +102,9 @@ const Header = () => {
            
       </header>
       <div className="header-container">
-        {/*<div className="logo">*/}
-        {/*  <img className='logo-img' src='https://baokan.tos-cn-beijing.volces.com/logo.png' />*/}
-        {/*</div>*/}
+        <div className="logo">
+          <img className='logo-img' src='https://api.ns-press.com/uploads/images/website/logo.png' />
+        </div>
 
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           {isMobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
